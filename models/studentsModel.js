@@ -10,3 +10,4 @@ const studentModel = {
 };
 
 module.exports = studentModel;
+ 

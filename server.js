@@ -3,19 +3,21 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-// parse requests dof ccontent-type; applicattion/json
+// parse requests of content-type - application/json
 app.use(bodyParser.json());
 
-// parse reuests of content-type; application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true}));
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "welcome to bezkoder application."});
+  res.json({ message: "Welcome to bezkoder application." });
 });
-require("./app/routes/product.route")(app);
 
-//set port, listen for requests
-app.listen(3000,() => {
-    console.log("server is running on prot 3000.");
+require("./app/routes/product.routes")(app);
+require("./app/routes/category.routes")(app);
+
+// set port, listen for requests
+app.listen(3000, () => {
+  console.log("Server is running on port 3000.");
 });
